@@ -1,0 +1,140 @@
+sequenceDiagram
+    LTC->>Lab_1: Please test Sample 'XRODQ'
+    Lab_1-->>LTC: "Negative result"
+
+
+sequenceDiagram
+    LTC->>Lab_1: Please test Sample 'XRODQ'
+    Lab_1-->>LTC: "Positive result for substance XX"
+    LTC->>Lab_1: Please send B Sample 'XRODQ' to Lab 2
+    LTC->>Lab_2: B Sample 'XRODQ' will arrive from Lab 1.
+    LTC->>Lab_2: Please test B Sample 'XRODQ'
+    Lab_2-->>LTC: "Positive result for substance XX"
+
+sequenceDiagram
+    LTC->>Lab_1: Please test Sample 'XRODQ'
+    Lab_1-->>LTC: "Atypical result"
+    LTC->>Lab_1: Please send B Sample 'XRODQ' to Lab 2
+    LTC->>Lab_2: B Sample 'XRODQ' will arrive from Lab 1.
+    LTC->>Lab_2: Please test B Sample 'XRODQ'
+    Lab_2-->>LTC: Sorry, we don't have capacity
+    LTC->>Lab_1: Please send B Sample 'XRODQ' to Lab 3 instead
+    LTC->>Lab_3: B Sample 'XRODQ' will arrive from Lab 1.
+    LTC->>Lab_3: Please test B Sample 'XRODQ'
+    LTC->>Lab_2: Please cancel request for Sample 'XRODQ'
+    Lab_3-->>LTC: "Negative result"
+	
+	
+sequenceDiagram
+    LTC->>Lab_1: Please test Sample 'XRODQ'
+    Lab_1-->>LTC: "Positive result for substance XX"
+    LTC->>Lab_1: Please send B Sample 'XRODQ' to Lab 2
+    LTC->>Lab_2: B Sample 'XRODQ' will arrive from Lab 1.
+    LTC->>Lab_2: Please test B Sample 'XRODQ'.
+    Lab_2-->>LTC: "Positive result for substance XX"
+	LTC-->>LTC: ⚠ Final decision is VOID
+
+
+
+classDiagram
+    Sample *-- TestRequest : 1-m
+    Sample *-- TestResult : 1-m
+
+    class Sample{
+      InternalID: 12345
+      ExternalID: XRODQ
+      Type: Saliva
+    }
+    class TestRequest{
+      RequestID: 23453
+      ID: “XRODQ”
+      Run_B_Test: true | false
+      Target_Lab: California
+      Comment: “”
+
+    }
+    class TestResult{
+      RequestID: 23453
+      ID: “XRODQ”
+      Result: Positive | Negative| Atypical
+      Comment: “”
+    }
+
+---------------------
+
+classDiagram
+	ICommsMessage <|-- IOutgoingMessage
+
+	IOutgoingMessage <|-- A_Sample_TestRequest
+	IOutgoingMessage <|-- B_Sample_TestRequest
+	IOutgoingMessage <|-- B_Sample_TransferRequest
+	IOutgoingMessage <|-- B_Sample_AdvanceNotification
+
+    class ICommsMessage{ }
+    class IOutgoingMessage{ }
+    class IIncomingMessage{ }
+	
+	class A_Sample_TestRequest { }
+	class B_Sample_TestRequest { }
+	class B_Sample_TransferRequest { }
+	class B_Sample_AdvanceNotification { }
+
+---------------------
+
+classDiagram
+    Sample *-- TestingProcess
+    TestingProcess *-- ICommsMessage : 1-m
+
+    ICommsMessage <|-- OutgoingMessage
+    ICommsMessage <|-- IncomingMessage
+
+    class Sample{
+
+    }
+
+    class TestingProcess{
+      
+    }
+
+    class ICommsMessage{
+      
+    }
+    class OutgoingMessage{
+      
+    }
+    class IncomingMessage{
+      
+    }
+ 
+
+---------------------
+
+classDiagram
+    Sample *-- TestingProcess
+    TestingProcess *-- ICommsMessage : 1-m
+	TestingProcess *-- OverallResult
+
+    ICommsMessage <|-- OutgoingMessage
+    ICommsMessage <|-- IncomingMessage
+
+    class Sample{
+
+    }
+
+    class TestingProcess{
+      
+    }
+
+    class ICommsMessage{
+      
+    }
+    class OutgoingMessage{
+      
+    }
+    class IncomingMessage{
+      
+    }
+    class OverallResult{
+      
+    }
+	
