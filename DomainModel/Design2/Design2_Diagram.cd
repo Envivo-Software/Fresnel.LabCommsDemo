@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LabCommsModel.Design2.Laboratory" BaseTypeListCollapsed="true">
+    <Position X="5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAAAAAEAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Design2\Laboratory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LabCommsModel.Design2.OverallResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgCIAEAAAAAAAIEAAAgAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Design2\OverallResult.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LabCommsModel.Design2.Sample" BaseTypeListCollapsed="true">
+    <Position X="1" Y="0.5" Width="1.75" />
+    <AssociationLine Name="TestingProcess" Type="LabCommsModel.Design2.TestingProcess">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.089" Y="0.727" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAAAAAEAAAgAAAAGAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Design2\Sample.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TestingProcess" />
+      <Property Name="SampleType" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LabCommsModel.Design2.TestingProcess" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="4" Width="2.5" />
+    <AssociationLine Name="Messages" Type="LabCommsModel.Design2.Messages.ICommsMessage">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.12" Y="0.445" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAAAABEAAAAAARAAAAAABAAAAAAAQAAAgA=</HashCode>
+      <FileName>Design2\TestingProcess.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Result" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Messages" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LabCommsModel.Design2.Messages.IncomingMessages.TestRequestRejected" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="14.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAQAQAAAAQAAAAAAAAAAAIAAAAAAAAAIAA=</HashCode>
+      <FileName>Design2\Messages\IncomingMessages\TestRequestRejected.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LabCommsModel.Design2.Messages.IncomingMessages.TestResult" BaseTypeListCollapsed="true">
+    <Position X="5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAQAQAAAAQAAAQAAAAAAAIAAAAAAAAAIAA=</HashCode>
+      <FileName>Design2\Messages\IncomingMessages\TestResult.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LabCommsModel.Design2.Messages.OutgoingMessages.A_Sample_TestRequest" BaseTypeListCollapsed="true">
+    <Position X="5" Y="11" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAAAQAAAAQAAgAAAACAAAIAAAAAAAAAIAA=</HashCode>
+      <FileName>Design2\Messages\OutgoingMessages\A_Sample_TestRequest.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LabCommsModel.Design2.Messages.OutgoingMessages.B_Sample_AdvanceNotification" BaseTypeListCollapsed="true">
+    <Position X="12" Y="11" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAAAQAAAAQAAgAAAACAAAIAAAAAAAAAIAA=</HashCode>
+      <FileName>Design2\Messages\OutgoingMessages\B_Sample_AdvanceNotification.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LabCommsModel.Design2.Messages.OutgoingMessages.B_Sample_TestRequest" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="11" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAAAQAAAAQAAgAAAACAAAIAAAAAAAAAIAA=</HashCode>
+      <FileName>Design2\Messages\OutgoingMessages\B_Sample_TestRequest.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LabCommsModel.Design2.Messages.OutgoingMessages.B_Sample_TransferRequest" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="11" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAACAAAAAQAAAAQAAgAAAACAAAIAAAAAAAAAIAA=</HashCode>
+      <FileName>Design2\Messages\OutgoingMessages\B_Sample_TransferRequest.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="LabCommsModel.Design2.Messages.IncomingMessages.IIncomingMessage">
+    <Position X="2.25" Y="14.5" Width="1.75" />
+    <InheritanceLine Type="LabCommsModel.Design2.Messages.ICommsMessage" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="9.247" />
+        <Point X="2" Y="15.062" />
+        <Point X="2.25" Y="15.062" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Design2\Messages\IncomingMessages\IIncomingMessage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LabCommsModel.Design2.Messages.OutgoingMessages.IOutgoingMessage">
+    <Position X="2.25" Y="11" Width="1.75" />
+    <InheritanceLine Type="LabCommsModel.Design2.Messages.ICommsMessage" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="9.247" />
+        <Point X="2" Y="11.625" />
+        <Point X="2.25" Y="11.625" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Design2\Messages\OutgoingMessages\IOutgoingMessage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LabCommsModel.Design2.Messages.ICommsMessage">
+    <Position X="1.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAQAAAAAAAAAAAIAAAAAAAAAIAA=</HashCode>
+      <FileName>Design2\Messages\ICommsMessage.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Laboratory" />
+    </ShowAsAssociation>
+  </Interface>
+  <Enum Name="LabCommsModel.Design2.SampleType">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAgAAAAAABAAAAAIAAAAAAAAAAABA=</HashCode>
+      <FileName>Design2\SampleType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LabCommsModel.Design2.TestResultType">
+    <Position X="4.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAACAABA=</HashCode>
+      <FileName>Design2\TestResultType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
