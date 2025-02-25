@@ -13,6 +13,7 @@ namespace LabCommsModel.Design2
     /// </summary>
     public class TestingProcess : IAggregateRoot, IPersistable
     {
+        #region Fresnel attributes
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
@@ -24,6 +25,8 @@ namespace LabCommsModel.Design2
         /// </summary>
         [ConcurrencyCheck]
         public long Version { get; set; }
+
+        #endregion
 
         /// <summary>
         /// The Sample this conversation is associated with
@@ -85,35 +88,6 @@ namespace LabCommsModel.Design2
             }
 
             return message;
-        }
-
-        /// <summary>
-        /// Simulate a result being received from the Lab
-        /// </summary>
-        [Method(relatedPropertyName: nameof(Messages))]
-        public void ReceiveTestResult(
-            [Required]
-            [UI(preferredControl:UiControlType.Select)]
-            Laboratory laboratory,
-
-            [Required]
-            TestResultType resultType,
-
-            [UI(preferredControl: UiControlType.TextArea)]
-            string optionalComment
-        )
-        {
-            var testResult = new TestResult
-            {
-                Id = Guid.NewGuid(),
-                ExternalId = Sample?.ExternalId,
-                ReceivedAt = DateTime.Now,
-                Laboratory = laboratory,
-                Result = resultType,
-                Comments = optionalComment
-            };
-
-            Messages.Add(testResult);
         }
 
         /// <summary>
