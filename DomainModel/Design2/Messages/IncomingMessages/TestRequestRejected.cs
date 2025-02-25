@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 namespace LabCommsModel.Design2.Messages.IncomingMessages
 {
     /// <summary>
-    /// The results of a Test conducted by the Laboratory
+    /// The Lab cannot (or will not) process the associated Test Request
     /// </summary>
     public class TestRequestRejected : IIncomingMessage
     {
+        #region Fresnel attributes
         /// <inheritdoc/>
         [Key]
         public Guid Id { get; set; }
@@ -15,6 +16,8 @@ namespace LabCommsModel.Design2.Messages.IncomingMessages
         /// <inheritdoc/>
         [ConcurrencyCheck]
         public long Version { get; set; }
+
+        #endregion
 
         /// <summary>
         /// The public facing ID for the associated Sample
@@ -34,7 +37,9 @@ namespace LabCommsModel.Design2.Messages.IncomingMessages
         /// </summary>
         public Laboratory Laboratory { get; set; }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// The reason the Test Request was rejected
+        /// </summary>
         [UI(preferredControl: UiControlType.TextArea)]
         public string? Comments { get; set; }
     }

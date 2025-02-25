@@ -8,6 +8,7 @@ namespace LabCommsModel.Design2
     /// </summary>
     public class Laboratory : IEntity, IPersistable
     {
+        #region Fresnel attributes
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
@@ -19,6 +20,8 @@ namespace LabCommsModel.Design2
         /// </summary>
         [ConcurrencyCheck]
         public long Version { get; set; }
+
+        #endregion
 
         /// <summary>
         /// The name of this Laboratory

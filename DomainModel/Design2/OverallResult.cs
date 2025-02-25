@@ -10,11 +10,14 @@ namespace LabCommsModel.Design2
     /// </summary>
     public class OverallResult : IEntity
     {
+        #region Fresnel attributes
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
         [Key]
         public Guid Id { get; set; }
+        
+        #endregion
 
         /// <summary>
         /// The Sample this conversation is associated with

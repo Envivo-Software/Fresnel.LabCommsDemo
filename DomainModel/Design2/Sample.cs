@@ -10,6 +10,7 @@ namespace LabCommsModel.Design2
     /// </summary>
     public class Sample : IAggregateRoot, IPersistable
     {
+        #region Fresnel attributes
         /// <inheritdoc/>
         [Key]
         public Guid Id { get; set; }
@@ -17,6 +18,8 @@ namespace LabCommsModel.Design2
         /// <inheritdoc/>
         [ConcurrencyCheck]
         public long Version { get; set; }
+
+        #endregion
 
         /// <summary>
         /// The public facing ID for this Sample

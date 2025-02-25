@@ -11,6 +11,7 @@ namespace LabCommsModel.Design1
     /// </summary>
     public class Sample : IAggregateRoot, IPersistable
     {
+        #region Fresnel attributes
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
@@ -22,6 +23,8 @@ namespace LabCommsModel.Design1
         /// </summary>
         [ConcurrencyCheck]
         public long Version { get; set; }
+
+        #endregion
 
         /// <summary>
         /// The public facing ID for this Sample. This is to anonymise the athlete.
@@ -46,6 +49,7 @@ namespace LabCommsModel.Design1
         /// </summary>
         [Relationship(RelationshipType.Owns)]
         [UI(UiRenderOption.InlineExpanded)]
+        [AllowedOperations(canCreate: false, canAdd: false)]
         [Collection(removeMethodName: nameof(RemoveTestRequest))]
         [JsonInclude]
         public ICollection<TestRequest> TestRequests { get; internal set; } = [];
@@ -68,7 +72,7 @@ namespace LabCommsModel.Design1
         /// </summary>
         /// <returns></returns>
         [Method(relatedPropertyName: nameof(TestRequests))]
-        public TestRequest AddTestRequest()
+        internal TestRequest AddTestRequest()
         {
             var newTestRequest = new TestRequest
             {
@@ -83,7 +87,7 @@ namespace LabCommsModel.Design1
         /// </summary>
         /// <param name="testRequest"></param>
         [Visible(false)]
-        public void RemoveTestRequest(TestRequest testRequest)
+        internal void RemoveTestRequest(TestRequest testRequest)
         {
             TestRequests.Remove(testRequest);
             testRequest.Sample = null;
@@ -94,8 +98,9 @@ namespace LabCommsModel.Design1
         /// Simulate a result being received from the Lab
         /// </summary>
         [Method(relatedPropertyName: nameof(TestResults))]
-        public void ReceiveTestResult(
+        internal void ReceiveTestResult(
             [FilterQuerySpecification(typeof(SampleTestResultOriginalRequestQuerySpecification))]
+            [UI(preferredControl: UiControlType.Select)]
             [Required]
             TestRequest originalRequest,
 
