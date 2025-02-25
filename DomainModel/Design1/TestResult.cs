@@ -7,7 +7,7 @@ namespace LabCommsModel.Design1
     /// <summary>
     /// The result of the Test returned from the Lab
     /// </summary>
-    public record TestResult : IEntity
+    public class TestResult : IEntity, IValueObject
     {
         /// <summary>
         /// <inheritdoc/>

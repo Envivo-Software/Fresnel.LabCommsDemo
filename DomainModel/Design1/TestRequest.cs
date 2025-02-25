@@ -8,7 +8,7 @@ namespace LabCommsModel.Design1
     /// <summary>
     /// A request sent to a Lab
     /// </summary>
-    public record TestRequest : IEntity
+    public class TestRequest : IEntity, IValueObject
     {
         /// <summary>
         /// <inheritdoc/>
