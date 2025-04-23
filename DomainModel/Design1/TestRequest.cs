@@ -1,7 +1,7 @@
-﻿using LabCommsModel.Design1.Dependencies;
+﻿using System.Text.Json.Serialization;
 using Envivo.Fresnel.ModelAttributes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
-using System.Text.Json.Serialization;
+using LabCommsModel.Design1.Dependencies;
 
 namespace LabCommsModel.Design1
 {
@@ -24,27 +24,21 @@ namespace LabCommsModel.Design1
         /// <summary>
         /// The Lab that should conduct this Test
         /// </summary>
-        [Relationship(RelationshipType.Has)]
-        [FilterQuerySpecification(typeof(TargetLabQuerySpecification))]
-        [UI(UiRenderOption.InlineSimple, preferredControl: UiControlType.Select)]
-        [JsonInclude]
         public Laboratory? TargetLab { get; set; }
 
         /// <summary>
-        /// Is the request for the B Sample?
+        /// Is the request for the B-Sample?
         /// </summary>
         public bool Is_B_Sample { get; set; }
 
         /// <summary>
         /// Optional: Any comments or instructions for the Lab 
         /// </summary>
-        [UI(preferredControl: UiControlType.TextArea)]
         public string? Comments { get; set; }
 
         /// <summary>
         /// The Sample this Test Request is associated with
         /// </summary>
-        [Relationship(RelationshipType.OwnedBy)]
         [JsonInclude]
         public Sample? Sample { get; internal set; }
 

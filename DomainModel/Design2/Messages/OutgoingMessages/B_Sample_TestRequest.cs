@@ -1,11 +1,14 @@
-﻿using Envivo.Fresnel.ModelAttributes;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Envivo.Fresnel.ModelAttributes;
 
 namespace LabCommsModel.Design2.Messages.OutgoingMessages
 {
     /// <summary>
     /// Request to conduct Tests against the B-Sample
     /// </summary>
+    [DisplayName("Out: B-Sample Test Request")]
+    [Visible(isVisibleInLibrary: true)]
     public class B_Sample_TestRequest : IOutgoingMessage
     {
         #region Fresnel attributes
@@ -38,7 +41,6 @@ namespace LabCommsModel.Design2.Messages.OutgoingMessages
         public Laboratory Laboratory { get; set; }
 
         /// <inheritdoc/>
-        [UI(preferredControl: UiControlType.TextArea)]
         public string? Comments { get; set; }
 
         /// <summary>

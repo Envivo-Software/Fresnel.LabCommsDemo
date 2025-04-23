@@ -1,11 +1,14 @@
-﻿using Envivo.Fresnel.ModelAttributes;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Envivo.Fresnel.ModelAttributes;
 
 namespace LabCommsModel.Design2.Messages.OutgoingMessages
 {
     /// <summary>
     /// Request to run Tests against the A-Sample
     /// </summary>
+    [DisplayName("Out: A-Sample Test Request")]
+    [Visible(isVisibleInLibrary: true)]
     public class A_Sample_TestRequest : IOutgoingMessage
     {
         #region Fresnel attributes
@@ -24,6 +27,8 @@ namespace LabCommsModel.Design2.Messages.OutgoingMessages
         /// </summary>
         public string? ExternalId { get; set; }
 
+        public string RequestID { get; private set; }
+
         /// <summary>
         /// The time when the message was sent
         /// </summary>
@@ -35,10 +40,9 @@ namespace LabCommsModel.Design2.Messages.OutgoingMessages
         /// <summary>
         /// The Laboratory associated with this Message
         /// </summary>
-        public Laboratory Laboratory { get;  set; }
+        public Laboratory Laboratory { get; set; }
 
         /// <inheritdoc/>
-        [UI(preferredControl: UiControlType.TextArea)]
         public string? Comments { get; set; }
 
         /// <summary>
@@ -49,6 +53,7 @@ namespace LabCommsModel.Design2.Messages.OutgoingMessages
             if (SentAt != null)
                 return;
 
+            RequestID = Guid.NewGuid().ToString();
             SentAt = DateTime.Now;
         }
     }

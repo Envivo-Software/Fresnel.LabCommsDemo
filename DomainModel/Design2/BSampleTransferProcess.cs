@@ -1,17 +1,20 @@
-﻿using LabCommsModel.Design2.Messages.OutgoingMessages;
-using Envivo.Fresnel.ModelAttributes;
+﻿using Envivo.Fresnel.ModelAttributes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
+using LabCommsModel.Design2.Messages.OutgoingMessages;
 
 namespace LabCommsModel.Design2
 {
     /// <summary>
     /// Executes the process of transferring a B-Sample from one Lab to another
     /// </summary>
+    [Visible(isVisibleInLibrary: false)]
     public class BSampleTransferProcess :
         ICommandObject<TestingProcess>,
         IValueObject
     {
         public Guid Id { get; set; }
+
+        #region Properties
 
         /// <summary>
         /// The Laboratory that currently possesses the B-Sample
@@ -40,11 +43,13 @@ namespace LabCommsModel.Design2
         /// <summary>
         /// Should the Sample be tested immediately?
         /// </summary>
-        public bool ShouldTestOnArrival { get; set; }
+        public bool ShouldBeTestedOnArrival { get; set; }
 
         public bool IsReadyToExecute =>
             Laboratory != null &&
             TargetLaboratory != null;
+
+        #endregion
 
         /// <summary>
         /// Executes the command
@@ -57,10 +62,10 @@ namespace LabCommsModel.Design2
             var transferRequest = CreateTransferRequest(externalId, Laboratory);
             testingProcess.Messages.Add(transferRequest);
 
-            var advanceNotification = CreateIncomingSampleNotification(externalId, TargetLaboratory);
+            var advanceNotification = CreateAdvanceSampleNotification(externalId, TargetLaboratory);
             testingProcess.Messages.Add(advanceNotification);
 
-            if (ShouldTestOnArrival)
+            if (ShouldBeTestedOnArrival)
             {
                 var testRequest = CreateBSampleTestRequest(externalId, TargetLaboratory);
                 testingProcess.Messages.Add(testRequest);
@@ -82,7 +87,7 @@ namespace LabCommsModel.Design2
             return msg;
         }
 
-        private B_Sample_AdvanceNotification CreateIncomingSampleNotification(string externalId, Laboratory targetLaboratory)
+        private B_Sample_AdvanceNotification CreateAdvanceSampleNotification(string externalId, Laboratory targetLaboratory)
         {
             var msg = new B_Sample_AdvanceNotification
             {

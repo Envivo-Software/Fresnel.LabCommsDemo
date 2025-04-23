@@ -1,5 +1,5 @@
-﻿using Envivo.Fresnel.ModelTypes.Interfaces;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Envivo.Fresnel.ModelTypes.Interfaces;
 
 namespace LabCommsModel.Design2
 {

@@ -1,10 +1,8 @@
-﻿using LabCommsModel.Design2.Messages;
-using LabCommsModel.Design2.Messages.IncomingMessages;
-using LabCommsModel.Design2.Messages.OutgoingMessages;
-using Envivo.Fresnel.ModelAttributes;
-using Envivo.Fresnel.ModelTypes.Interfaces;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using Envivo.Fresnel.ModelTypes.Interfaces;
+using LabCommsModel.Design2.Messages;
+using LabCommsModel.Design2.Messages.IncomingMessages;
 
 namespace LabCommsModel.Design2
 {
@@ -13,6 +11,11 @@ namespace LabCommsModel.Design2
     /// </summary>
     public class TestingProcess : IAggregateRoot, IPersistable
     {
+        public TestingProcess()
+        {
+            OverallResult = new OverallResult(this);
+        }
+
         #region Fresnel attributes
         /// <summary>
         /// <inheritdoc/>
@@ -31,8 +34,6 @@ namespace LabCommsModel.Design2
         /// <summary>
         /// The Sample this conversation is associated with
         /// </summary>
-        [Relationship(RelationshipType.OwnedBy)]
-        [UI(UiRenderOption.InlineSimple)]
         [JsonInclude]
         public Sample? Sample { get; internal set; }
 
@@ -42,37 +43,13 @@ namespace LabCommsModel.Design2
         public DateTime InitiatedAt { get; internal set; }
 
         /// <summary>
-        /// The final Test result 
+        /// The current state of progress
         /// </summary>
-        [JsonInclude]
-        public TestResultType? Result { get; internal set; }
-
-        ///// <summary>
-        ///// The overall Test result 
-        ///// </summary>
-        //[UI(UiRenderOption.InlineSimple)]
-        //[JsonInclude]
-        //public OverallResult OverallResult { get; internal set; } = new OverallResult();
-
-        ///// <summary>
-        ///// The current state of progress
-        ///// </summary>
-        //public TestingProgressStatusType Status { get; set; }
+        internal TestingProgressStatusType Status { get; set; }
 
         /// <summary>
         /// All messages to and from the Lab/s
         /// </summary>
-        [Relationship(RelationshipType.Owns)]
-        [UI(UiRenderOption.InlineExpanded)]
-        [Collection(canExpandRows: true, addMethodName: nameof(AddNewMessage),
-            VisibleColumnNames = [
-                nameof(ICommsMessage.ExternalId),
-                nameof(ICommsMessage.Laboratory),
-                nameof(B_Sample_TransferRequest.TargetLaboratory),
-                nameof(IOutgoingMessage.SentAt),
-                nameof(IIncomingMessage.ReceivedAt),
-                nameof(TestResult.Result),
-        ])]
         [JsonInclude]
         public ICollection<ICommsMessage> Messages { get; internal set; } = [];
 
@@ -91,11 +68,25 @@ namespace LabCommsModel.Design2
         }
 
         /// <summary>
+        /// The latest Test result 
+        /// </summary>
+        public TestResultType? Result =>
+            this.Messages?
+            .OfType<TestResult>()
+            .LastOrDefault()?
+            .Result;
+
+        /// <summary>
+        /// The overall Test result 
+        /// </summary>
+        [JsonInclude]
+        public OverallResult OverallResult { get; set; }
+
+        /// <summary>
         /// Starts the process for transferring a B-Sample between Labs
         /// </summary>
         /// <returns></returns>
-        [Method(relatedPropertyName: nameof(Messages))]
-        public BSampleTransferProcess TransferBSampleToAnotherLab()
+        internal BSampleTransferProcess TransferBSampleToAnotherLab()
         {
             return new BSampleTransferProcess();
         }

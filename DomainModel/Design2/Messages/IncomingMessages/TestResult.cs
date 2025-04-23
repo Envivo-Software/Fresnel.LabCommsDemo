@@ -1,12 +1,17 @@
-﻿using Envivo.Fresnel.ModelAttributes;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using Envivo.Fresnel.ModelAttributes;
 
 namespace LabCommsModel.Design2.Messages.IncomingMessages
 {
     /// <summary>
     /// The results of a Test conducted by the Laboratory
     /// </summary>
+    #region Attributes
+    [DisplayName("In: Test Result")]
+    [Visible(isVisibleInLibrary: true)]
+    #endregion
     public class TestResult : IIncomingMessage
     {
         #region Fresnel attributes
@@ -39,7 +44,6 @@ namespace LabCommsModel.Design2.Messages.IncomingMessages
         public Laboratory Laboratory { get; set; }
 
         /// <inheritdoc/>
-        [UI(preferredControl: UiControlType.TextArea)]
         public string? Comments { get; set; }
 
         /// <summary>

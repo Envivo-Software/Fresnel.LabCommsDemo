@@ -1,6 +1,7 @@
 ﻿using Envivo.Fresnel.ModelTypes.Interfaces;
+using LabCommsModel.Design1;
 
-namespace LabCommsModel.Design1.Dependencies
+namespace Design1.Dependencies
 {
 
     /// <summary>

@@ -1,6 +1,5 @@
-﻿using Envivo.Fresnel.ModelAttributes;
+﻿using System.Text.Json.Serialization;
 using Envivo.Fresnel.ModelTypes.Interfaces;
-using System.Text.Json.Serialization;
 
 namespace LabCommsModel.Design1
 {
@@ -23,7 +22,6 @@ namespace LabCommsModel.Design1
         /// <summary>
         /// The Test Request that this Result is associated with
         /// </summary>
-        [Relationship(RelationshipType.OwnedBy)]
         [JsonInclude]
         public TestRequest TestRequest { get; internal set; }
 

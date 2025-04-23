@@ -1,11 +1,14 @@
-﻿using Envivo.Fresnel.ModelAttributes;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Envivo.Fresnel.ModelAttributes;
 
 namespace LabCommsModel.Design2.Messages.IncomingMessages
 {
     /// <summary>
     /// The Lab cannot (or will not) process the associated Test Request
     /// </summary>
+    [DisplayName("In: Test Request Rejected")]
+    [Visible(isVisibleInLibrary: true)]
     public class TestRequestRejected : IIncomingMessage
     {
         #region Fresnel attributes
@@ -40,7 +43,6 @@ namespace LabCommsModel.Design2.Messages.IncomingMessages
         /// <summary>
         /// The reason the Test Request was rejected
         /// </summary>
-        [UI(preferredControl: UiControlType.TextArea)]
         public string? Comments { get; set; }
     }
 }

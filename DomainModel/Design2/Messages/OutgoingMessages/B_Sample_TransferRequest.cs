@@ -1,11 +1,14 @@
-﻿using Envivo.Fresnel.ModelAttributes;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Envivo.Fresnel.ModelAttributes;
 
 namespace LabCommsModel.Design2.Messages.OutgoingMessages
 {
     /// <summary>
     /// Request to Transfer the B-Sample to another Laboratory
     /// </summary>
+    [DisplayName("Out: B-Sample Transfer Request")]
+    [Visible(isVisibleInLibrary: true)]
     public class B_Sample_TransferRequest : IOutgoingMessage
     {
         #region Fresnel attributes
@@ -40,11 +43,9 @@ namespace LabCommsModel.Design2.Messages.OutgoingMessages
         /// <summary>
         /// The Laboratory that will take over the testing
         /// </summary>
-        [UI(UiRenderOption.InlineSimple, preferredControl: UiControlType.Select)]
         public Laboratory TargetLaboratory { get; set; }
 
         /// <inheritdoc/>
-        [UI(preferredControl: UiControlType.TextArea)]
         public string? Comments { get; set; }
 
         /// <summary>

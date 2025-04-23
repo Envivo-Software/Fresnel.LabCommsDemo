@@ -1,11 +1,14 @@
-﻿using Envivo.Fresnel.ModelAttributes;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Envivo.Fresnel.ModelAttributes;
 
 namespace LabCommsModel.Design2.Messages.OutgoingMessages
 {
     /// <summary>
     /// Used to notify a Lab that a B-Sample will be arriving
     /// </summary>
+    [DisplayName("Out: B-Sample Advance Notification")]
+    [Visible(isVisibleInLibrary: true)]
     public class B_Sample_AdvanceNotification : IOutgoingMessage
     {
         #region Fresnel attributes
@@ -33,12 +36,16 @@ namespace LabCommsModel.Design2.Messages.OutgoingMessages
         public DateTime? MessageDate => SentAt;
 
         /// <summary>
-        /// The Laboratory associated with this Message
+        /// The Laboratory that will receive the B-Sample
         /// </summary>
         public Laboratory Laboratory { get; set; }
 
+        /// <summary>
+        /// The Laboratory that the sample will arrive from
+        /// </summary>
+        public Laboratory SourceLaboratory { get; set; }
+
         /// <inheritdoc/>
-        [UI(preferredControl: UiControlType.TextArea)]
         public string? Comments { get; set; }
 
         /// <summary>

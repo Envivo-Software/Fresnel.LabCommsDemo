@@ -1,7 +1,6 @@
-﻿using Envivo.Fresnel.ModelAttributes;
-using Envivo.Fresnel.ModelTypes.Interfaces;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using Envivo.Fresnel.ModelTypes.Interfaces;
 
 namespace LabCommsModel.Design2
 {
@@ -34,7 +33,6 @@ namespace LabCommsModel.Design2
         /// <summary>
         /// Details of the Testing process
         /// </summary>
-        [Relationship(RelationshipType.Owns)]
         [JsonInclude]
         public TestingProcess? TestingProcess { get; internal set; }
 
@@ -55,6 +53,10 @@ namespace LabCommsModel.Design2
             return newTestingProcess;
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"{ExternalId}/{SampleType}";

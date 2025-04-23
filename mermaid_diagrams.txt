@@ -1,4 +1,14 @@
 sequenceDiagram
+    SCP->>+LTC: Sample X is shipped
+    SCP-->>Lab_1: **SHIP PHYSICAL SAMPLE**
+    LTC->>+Lab_1: Test Sample X
+    Lab_1->>LTC: Sample X is POSITIVE
+    Lab_1-->>+Lab_2: **SHIP PHYSICAL SAMPLE**
+    LTC->>+Lab_2: Test Sample X for confirmation
+    Lab_2-->>LTC: Sample X is POSITIVE
+	
+
+sequenceDiagram
     LTC->>Lab_1: Please test Sample 'XRODQ'
     Lab_1-->>LTC: "Negative result"
 

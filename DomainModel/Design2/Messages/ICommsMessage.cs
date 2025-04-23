@@ -8,13 +8,11 @@ namespace LabCommsModel.Design2.Messages
         /// <summary>
         /// The public facing ID for the associated Sample
         /// </summary>
-        [AllowedOperations(canModify: false)]
         public string? ExternalId { get; set; }
 
         /// <summary>
         /// The Laboratory associated with this Message
         /// </summary>
-        [UI(renderOption: UiRenderOption.InlineSimple, preferredControl: UiControlType.Select)]
         public Laboratory Laboratory { get; set; }
 
         [Visible(false)]
