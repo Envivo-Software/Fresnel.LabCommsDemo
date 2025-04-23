@@ -3,14 +3,14 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
-    <AssemblyVersion>24.0206.0.0</AssemblyVersion>
-    <FileVersion>24.0206.0.0</FileVersion>
+    <AssemblyVersion>24.1119.0.0</AssemblyVersion>
+    <FileVersion>24.1119.0.0</FileVersion>
     <StaticWebAssetBasePath>wwwroot</StaticWebAssetBasePath>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Envivo.Fresnel.WebServer" Version="0.95.0-preview" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Envivo.Fresnel.WebServer" Version="0.98.0-preview" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DomainModel\LabCommsModel.csproj" />

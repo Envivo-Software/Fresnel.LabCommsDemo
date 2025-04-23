@@ -4,8 +4,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <AssemblyVersion>23.1228.0.0</AssemblyVersion>
-    <FileVersion>23.1228.0.0</FileVersion>
+    <AssemblyVersion>24.1119.0.0</AssemblyVersion>
+    <FileVersion>24.1119.0.0</FileVersion>
+    <Description>Lab Communications Demo</Description>
   </PropertyGroup>
   <Target Name="EmbedDocumentation" BeforeTargets="PrepareForBuild">
     <ItemGroup>
@@ -15,7 +16,7 @@
     </ItemGroup>
   </Target>
   <ItemGroup>
-    <PackageReference Include="Envivo.Fresnel.ModelAttributes" Version="2.5.1" />
-    <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="2.5.0" />
+    <PackageReference Include="Envivo.Fresnel.ModelAttributes" Version="2.6.0" />
+    <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="2.6.0" />
   </ItemGroup>
 </Project>

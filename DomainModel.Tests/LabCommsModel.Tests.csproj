@@ -5,12 +5,12 @@
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <AssemblyVersion>23.1228.0.0</AssemblyVersion>
-    <FileVersion>23.1228.0.0</FileVersion>
+    <AssemblyVersion>24.1119.0.0</AssemblyVersion>
+    <FileVersion>24.1119.0.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="LightBDD.XUnit2" Version="3.7.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageReference Include="xunit" Version="2.7.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.7">
@@ -26,8 +26,8 @@
     <ProjectReference Include="..\DomainModel\LabCommsModel.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Envivo.Fresnel" Version="0.95.0-preview" />
-    <PackageReference Include="Envivo.Fresnel.ModelAttributes" Version="2.5.1" />
-    <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="2.5.0" />
+    <PackageReference Include="Envivo.Fresnel" Version="0.98.0-preview" />
+    <PackageReference Include="Envivo.Fresnel.ModelAttributes" Version="2.6.0" />
+    <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="2.6.0" />
   </ItemGroup>
 </Project>

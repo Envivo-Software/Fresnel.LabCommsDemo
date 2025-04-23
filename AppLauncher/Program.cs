@@ -1,4 +1,4 @@
-using LabCommsModel.Design1;
+﻿using LabCommsModel.Design1;
 using Envivo.Fresnel.Bootstrap.WebServer;
 using Envivo.Fresnel.Features;
 using Microsoft.AspNetCore.Builder;
@@ -11,6 +11,8 @@ builder.AddFresnel(opt =>
     opt
     .WithModelAssemblyFrom<Sample>()
     .WithFeature(Feature.UI_DoodleMode, FeatureState.On)
+    .WithFeature(Feature.UI_UserFeedback, FeatureState.On)
+    .WithFeature(Feature.UI_PanZoom, FeatureState.Off)
     .WithDefaultFileLogging();
 
     // Register your own dependencies here:
