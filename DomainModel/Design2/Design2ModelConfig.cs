@@ -43,6 +43,7 @@ namespace LabCommsModel.Design2
                     )
 
                 .Property(o => o.OverallResult,
+                    new RelationshipAttribute(RelationshipType.Owns),
                     new UIAttribute(UiRenderOption.InlineSimple)
                     )
 
